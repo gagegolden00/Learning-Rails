@@ -1,2 +1,0 @@
-class ActiveRecordAnswer < ApplicationRecord
-end
