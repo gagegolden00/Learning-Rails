@@ -1,0 +1,2 @@
+class ActiveRecordQuestionsController < ApplicationController
+end
