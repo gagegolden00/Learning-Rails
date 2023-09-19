@@ -1,0 +1,2 @@
+module ActiveRecordQuestionsHelper
+end

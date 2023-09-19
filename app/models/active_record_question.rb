@@ -1,0 +1,2 @@
+class ActiveRecordQuestion < ApplicationRecord
+end
