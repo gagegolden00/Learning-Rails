@@ -1,0 +1,2 @@
+class ActiveRecordMethodsController < ApplicationController
+end
