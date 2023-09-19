@@ -12,7 +12,9 @@
   <body>
     <header class="w-full h-20 bg-blue-500">
       <div class="flex justify-center">
-        <p>This is the header</p>
+        <% if user_signed_in? %>
+          <p>Signed in as <%= current_user.email %></p>
+        <% end %>
       </div>
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
