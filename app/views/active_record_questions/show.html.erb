@@ -1,1 +1,11 @@
+<div class="border border-black h-1/2 w-1/2">
+    <div class="border border-red-500 m-2 p-2">
+    <p><%= @active_record_question.question%></p>
+    <p><%= @active_record_question.active_record_answer.method %></p>
+    <p><%= @active_record_question.active_record_answer.arguments %></p>
+    <p><%= @active_record_question.active_record_answer.example %></p>
 
+    <%= link_to "Edit this question", edit_active_record_question_path(@active_record_question), class: "p-2 border border-red-500"%>
+  </div>
+
+</div>

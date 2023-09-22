@@ -1,10 +1,12 @@
 class ActiveRecordQuestionsController < ApplicationController
-  def show; end
+  def show
+    @active_record_question = ActiveRecordQuestion.find(params[:id])
+  end
 
   def create
     @active_record_question = ActiveRecordQuestion.new(active_record_question_params)
     if @active_record_question.save
-      redirect_to active_record_questions_path
+      redirect_to active_record_question_path(@active_record_question)
     else
       render :new
     end

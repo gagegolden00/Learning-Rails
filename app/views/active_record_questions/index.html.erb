@@ -5,6 +5,6 @@
     <p><%= q.question%></p>
     <p><%= q.active_record_answer.method %></p>
     <p><%= q.active_record_answer.example %></p>
-    <%= link_to "Edit this question", edit_active_record_question_path(q), class: "p-2 border border-red-500"%>
+    <%= link_to "Go to question", active_record_question_path(q), class: "p-2 border border-red-500"%>
   </div>
 <% end %>
