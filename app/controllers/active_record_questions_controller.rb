@@ -3,11 +3,10 @@ class ActiveRecordQuestionsController < ApplicationController
 
   def create
     @active_record_question = ActiveRecordQuestion.new(active_record_question_params)
-
     if @active_record_question.save
       redirect_to active_record_questions_path
     else
-      render 'new'
+      render :new
     end
   end
 

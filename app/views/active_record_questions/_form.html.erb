@@ -1,14 +1,6 @@
-<div>
-<% if @active_record_question.errors.any? %>
-  <ul>
-    <% @active_record_question.errors.full_messages.each do |msg|%>
-      <li><%= msg %> </li>
-    <% end %>
-  </ul>
-<% end %>
-</div>
+<%= render partial: "shared/errors", locals: {resource: @active_record_question}%>
 <div class="border border-red-500 w-full h-full flex justify-center">
-  <%= form_for @active_record_question, url: path, class: "" do |f| %>
+  <%= form_for @active_record_question, url: path, data: {turbo: false}, class: "" do |f| %>
     <div class="border border-green-500 flex flex-col">
       <%= f.label :question %>
       <%= f.text_field :question %>
