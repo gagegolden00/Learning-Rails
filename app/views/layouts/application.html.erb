@@ -10,7 +10,7 @@
     <%= javascript_importmap_tags %>
   </head>
   <body>
-    <header class="w-full h-20 bg-blue-500">
+    <header class="w-full h-20 theme-color-main">
       <div class="flex justify-center">
         <% if user_signed_in? %>
           <p>Signed in as <%= current_user.email %></p>
@@ -22,7 +22,7 @@
     <main class="border-4 border-yellow-500">
       <%= yield %>
     </main>
-    <footer class="w-full h-20 bg-blue-500">
+    <footer class="w-full h-20 theme-color-main">
       <div class="flex justify-center">
         <p>This is the footer</p>
       </div>
