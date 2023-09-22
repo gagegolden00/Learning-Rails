@@ -1,0 +1,7 @@
+<h1> Active recod questions index</h1>
+<% @active_record_questions.each do |q|%>
+  <div class="border border-red-500 m-2 p-2">
+    <p><%= q.question%></p>
+    <p><%= q.active_record_answer.method %></p>
+  </div>
+<% end %>

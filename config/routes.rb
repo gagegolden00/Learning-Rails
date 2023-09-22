@@ -8,4 +8,6 @@ Rails.application.routes.draw do
     sessions: 'users/sessions'
   }
 
+  resources :active_record_questions
+
 end
