@@ -2,7 +2,7 @@
 <%= link_to "New Question", new_active_record_question_path, class: "p-2 border border-red-500"%>
 <% @active_record_questions.each do |q|%>
   <div class="border border-red-500 m-2 p-2">
-    <p><%= q.question%></p>
+    <p><%= q.question_text%></p>
     <p><%= q.active_record_answer.method %></p>
     <p><%= q.active_record_answer.example %></p>
     <%= link_to "Go to question", active_record_question_path(q), class: "p-2 border border-red-500"%>

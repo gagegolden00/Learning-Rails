@@ -3,8 +3,8 @@
   <div class="flex flex-col w-full">
     <%= form_for @active_record_question, url: path, data: {turbo: false} do |f| %>
     <div class="flex flex-col w-1/2 mx-auto">
-      <%= f.label :question %>
-      <%= f.text_area :question %>
+      <%= f.label :question_text %>
+      <%= f.text_area :question_text %>
       <%= f.fields_for :active_record_answer_attributes, @active_record_answer do |ff| %>
         <%= ff.label :method_name %>
         <%= ff.text_field :method %>
