@@ -1,17 +1,8 @@
 class ActiveRecordQuestionsController < ApplicationController
   def show
     @active_record_question = ActiveRecordQuestion.find(params[:id])
-    # turbo edits on the show page
-    return unless params[:partial].present? && params[:target].present?
-    respond_to do |format|
-      format.turbo_stream do
-        render turbo_stream: turbo_stream.replace(
-          params[:target].gsub("_", "-"),
-          partial: "shared/#{params[:partial]}",
-          locals: {resource: @active_record_question, path: active_record_question_path(@active_record_question)}
-        )
-      end
-      format.html
+    if params[:partial].present? && params[:target].present?
+    turbo_response(frame: params[:target].gsub("_", "-"),partial: params[:partial], locals: { resource: @active_record_question, path: active_record_question_path(@active_record_question) })
     end
   end
 
@@ -30,8 +21,8 @@ class ActiveRecordQuestionsController < ApplicationController
   end
 
   def index
-    @active_record_questions = ActiveRecordQuestion.all
-    @active_record_answers = ActiveRecordAnswer.all
+    @active_record_questions = ActiveRecordQuestion.all.joins(:active_record_answer)
+    #@active_record_answers = ActiveRecordAnswer.all
   end
 
   def edit
@@ -41,11 +32,18 @@ class ActiveRecordQuestionsController < ApplicationController
 
   def update
     @active_record_question = ActiveRecordQuestion.find(params[:id])
-    if @active_record_question.update(active_record_question_params)
-      redirect_to active_record_questions_path
-    else
-      render :edit
-    end
+    return unless @active_record_question.update(active_record_question_params) && params[:commit] = "Submit"
+    turbo_response(frame: 'edit-text-area', partial: 'generic_attribute', locals: {
+      link_text: "Edit Question",
+      generic_attribute_value: "#{@active_record_question.question_text}",
+      target_path: active_record_question_path(@active_record_question, params: { target: :question_text, partial: :edit_text_area }),
+      link_options: {
+        data: {
+          turbo_stream: "",
+          locals: { resource: @active_record_question, path: active_record_question_path(@active_record_question) }
+        }
+      }
+    })
   end
 
 

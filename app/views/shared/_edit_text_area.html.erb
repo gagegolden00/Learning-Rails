@@ -1,6 +1,8 @@
-<%= form_with model: resource, url: path, class: "border border-red-600" do |f|%>
+<turbo-frame id="edit-text-area">
+<%= form_with model: resource, url: path, data: {turbo_stream: ""}, class: "border border-red-600" do |f|%>
   <%= f.label :label %>
-  <%= f.text_area :text_area_param %>
+  <%= f.text_area :question_text %>
   <%= f.submit "Submit" %>
 <% end %>
+</turbo-frame>
 
